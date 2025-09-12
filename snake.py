@@ -1,5 +1,8 @@
 from token import LEFTSHIFT
+import turtle
 from turtle import Turtle
+
+turtle.colormode(255) 
 START_POSITIONS= [(0, 0), (-20, 0), (-40, 0)]
 MOVE_DISTANCE=20
 UP=90
@@ -8,10 +11,12 @@ LEFT=180
 RIGHT=0
 class Snake:
     def __init__(self):
-
         self.segments = []
+        self.count=0
+        self.switch=True
         self.create_snake()
         self.head = self.segments[0]
+        
 
     def create_snake(self):
         for i in START_POSITIONS:
@@ -19,7 +24,18 @@ class Snake:
 
     def add_segment(self,position):
         my_turtle = Turtle('square')
-        my_turtle.color('cyan')
+        if self.count>=220:
+            self.switch=False
+        elif self.count<=30:
+            self.switch=True
+        if self.switch:
+            self.count+=30
+        else:
+            self.count-=30
+        if len(self.segments)==0:
+            my_turtle.color('red')
+        else:
+            my_turtle.color((self.count,self.count,self.count))
         my_turtle.penup()
         my_turtle.goto(position)
         self.segments.append(my_turtle)
