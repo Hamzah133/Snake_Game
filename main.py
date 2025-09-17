@@ -40,7 +40,7 @@ while game_on:
         if box==False:
             game_on=False
             screen.clear()
-            screen.bgcolor('black')
+            screen.bgcolor('blue')
 
 
     for i in snake.segments[1:]:
